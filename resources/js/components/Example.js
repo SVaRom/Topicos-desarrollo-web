@@ -1,26 +1,77 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Button, Col } from 'react-bootstrap';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Button, Container, Form } from "react-bootstrap";
+import axios from "axios";
 
-function Example() {
+const LoginForm = () => {
+    const [formValue, setformValue] = React.useState({
+        email: "",
+        password: "",
+    });
+
+    const onChange = (e) => {
+        e.persist();
+        setformValue({ ...formValue, [e.target.name]: e.target.value });
+    };
+    const handleSubmit = (e) => {
+        if (e && e.preventDefault()) e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("email", formValue.email);
+        formData.append("password", formValue.password);
+
+        axios
+            .post("http://localhost/topicos/public/api/login", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Accept: "application/json",
+                },
+            })
+            .then((response) => {
+                console.log("response:");
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Example Component</div>
+        <Container>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                        type="email"
+                        placeholder="Enter email"
+                        name="email"
+                        value={formValue.email}
+                        onChange={onChange}
+                    />
+                    <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                    </Form.Text>
+                </Form.Group>
 
-                        <div className="card-body">I'm an example component!</div>
-                        <Button as={Col} variant="secondary">Boton #1</Button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        value={formValue.password}
+                        onChange={onChange}
+                    />
+                </Form.Group>
+                <Button variant="secondary" type="submit">
+                    Submit
+                </Button>
+            </Form>
+        </Container>
     );
-}
+};
 
-export default Example;
+export default LoginForm;
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
+if (document.getElementById("example")) {
+    ReactDOM.render(<LoginForm />, document.getElementById("example"));
 }
