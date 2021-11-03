@@ -72,6 +72,3 @@ const LoginForm = () => {
 
 export default LoginForm;
 
-if (document.getElementById("example")) {
-    ReactDOM.render(<LoginForm />, document.getElementById("example"));
-}

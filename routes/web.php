@@ -18,8 +18,10 @@ use App\Http\Controllers\StudentController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/student', [StudentController::class, 'index']);
-Route::post('/studentStore', [StudentController::class, 'store']);
-Route::get('/studentToken', [StudentController::class, 'showToken']);
-Route::post('/studentUpdate', [StudentController::class, 'update']);
-Route::post('/studentDestroy', [StudentController::class, 'destroy']);
+// Route::post('/student', [StudentController::class, 'index']);
+// Route::post('/studentStore', [StudentController::class, 'store']);
+// Route::get('/studentToken', [StudentController::class, 'showToken']);
+// Route::post('/studentUpdate', [StudentController::class, 'update']);
+// Route::post('/studentDestroy', [StudentController::class, 'destroy']);
+Route::view('/LoginForm','welcome');
+Route::view('/Home','welcome');
