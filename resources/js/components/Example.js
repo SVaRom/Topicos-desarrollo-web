@@ -2,12 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Button, Container, Form } from "react-bootstrap";
 import axios from "axios";
+import { useHistory, useParams } from "react-router";
 
 const LoginForm = () => {
     const [formValue, setformValue] = React.useState({
         email: "",
         password: "",
     });
+
+    let history=useHistory();
 
     const onChange = (e) => {
         e.persist();
@@ -30,6 +33,7 @@ const LoginForm = () => {
             .then((response) => {
                 console.log("response:");
                 console.log(response);
+                history.push("/topicos/public/Home");
             })
             .catch((error) => {
                 console.log(error);
