@@ -6,7 +6,7 @@ const Navi = () => {
             <Container>
                 <Navbar.Brand href="/topicos/public/">Navbar</Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link href="/topicos/public/Home">Home</Nav.Link>
+                    <Nav.Link href="/topicos/public/">Home</Nav.Link>
                     <Nav.Link href="/topicos/public/LoginForm">Login</Nav.Link>
                 </Nav>
             </Container>

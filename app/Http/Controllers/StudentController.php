@@ -85,7 +85,7 @@ class StudentController extends Controller
      */
     public function show(Request $request)
     {
-        Program::find(1)->student;
+        Program::find(1)->student;//Llama al método con calusal program_id(1)
         $student=Student::find(1);
         return $student->program;
     }

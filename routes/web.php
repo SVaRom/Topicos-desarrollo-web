@@ -23,3 +23,5 @@ Route::get('/', function () {
 // Route::get('/studentToken', [StudentController::class, 'showToken']);
 // Route::post('/studentUpdate', [StudentController::class, 'update']);
 // Route::post('/studentDestroy', [StudentController::class, 'destroy']);
+Route::view('/LoginForm','welcome');
+// Route::view('/Home','welcome');
